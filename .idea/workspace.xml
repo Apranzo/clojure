@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="47b5f02a-aa95-49a9-9129-c3d1d4dcc5fa" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DepsLocalSettings">
+    <option name="repoId" value="" />
+    <option name="repoUrl" value="" />
+  </component>
+  <component name="ProjectId" id="1UwbjIOpi7nP30yhiXrqHiM1CFW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Clojure" />
+  </component>
+  <component name="ReplState" timestamp="1576436788759">{:repl-history {:ide [], :local [{:command &quot;(def student-tbl (csv/parse-csv (slurp \&quot;student.csv\&quot;)))&quot;, :offset 55, :ns &quot;user&quot;} {:command &quot;(csv/parse-csv (slurp \&quot;student.csv\&quot;))&quot;, :offset 37, :ns &quot;user&quot;} {:command &quot;(defn table-keys [tbl]\n  (for [f (first tbl) r (rest tbl)] [f r]))&quot;, :offset 66, :ns &quot;user&quot;} {:command &quot;table-keys student-tbl&quot;, :offset 22, :ns &quot;user&quot;} {:command &quot;(defn table-keys [tbl] ([first tbl]))&quot;, :offset 37, :ns &quot;user&quot;} {:command &quot;(def student-tbl (csv/parse-csv (slurp \&quot;student.csv\&quot;)))\n(def subject-tbl (csv/parse-csv (slurp \&quot;subject.csv\&quot;)))\n(def student-subject-tbl (csv/parse-csv (slurp \&quot;student_subject.csv\&quot;)))&quot;, :offset 183, :ns &quot;user&quot;} {:command &quot;(defn table-keys [tbl] (first tbl))&quot;, :offset 35, :ns &quot;user&quot;} {:command &quot;(table-keys student-tbl)&quot;, :offset 23, :ns &quot;user&quot;} {:command &quot;(defn key-value-pairs [tbl-keys tbl-record]\n  map concat tbl-keys tbl-record)&quot;, :offset 77, :ns &quot;user&quot;} {:command &quot;( (table-keys student-tbl)) &quot;, :offset 1, :ns &quot;user&quot;} {:command &quot; (table-keys student-tbl) &quot;, :offset 24, :ns &quot;user&quot;} {:command &quot;(defn key-value-pairs [tbl-keys tbl-record]\n  map concat [tbl-keys] [tbl-record])&quot;, :offset 81, :ns &quot;user&quot;} {:command &quot;(defn key-value-pairs [tbl-keys tbl-record]\n  map list tbl-keys tbl-record)&quot;, :offset 75, :ns &quot;user&quot;} {:command &quot;(key-value-pairs [:id :surname :year :group_id] ([\&quot;1\&quot; \&quot;Ivanov\&quot; \&quot;1998\&quot;] [\&quot;2\&quot; \&quot;Petrov\&quot; \&quot;1997\&quot;] [\&quot;3\&quot; \&quot;Sidorov\&quot; \&quot;1996\&quot;])) &quot;, :offset 47, :ns &quot;user&quot;} {:command &quot;(defn key-value-pairs [tbl-keys tbl-record]\n  (map list tbl-keys tbl-record))&quot;, :offset 77, :ns &quot;user&quot;} {:command &quot;(key-value-pairs [:id :surname :year :group_id] '([\&quot;1\&quot; \&quot;Ivanov\&quot; \&quot;1998\&quot;] [\&quot;2\&quot; \&quot;Petrov\&quot; \&quot;1997\&quot;] [\&quot;3\&quot; \&quot;Sidorov\&quot; \&quot;1996\&quot;])) &quot;, :offset 49, :ns &quot;user&quot;} {:command &quot;(defn key-value-pairs [tbl-keys tbl-record]\n  (map concat tbl-keys tbl-record))&quot;, :offset 79, :ns &quot;user&quot;} {:command &quot; (rest student-tbl) &quot;, :offset 0, :ns &quot;user&quot;} {:command &quot;(defn key-value-pairs [tbl-keys tbl-record]\n  (map list tbl-keys (flatten tbl-record)))&quot;, :offset 84, :ns &quot;user&quot;} {:command &quot;(defn key-value-pairs [tbl-keys tbl-record]\n  (flatten(map list tbl-keys (flatten tbl-record))))&quot;, :offset 54, :ns &quot;user&quot;} {:command &quot;(ns csvdb.core-test\n  (:require [clojure.test :refer :all]\n        [csvdb.core :refer :all]))\n\n(deftest table-keys-test\n     (testing\n       (is (= (vec (table-keys student-tbl)))\n             [:id :surname :year :group_id])))&quot;, :offset 226, :ns &quot;user&quot;} {:command &quot;(key-value-pairs (table-keys student-tbl) (rest student-tbl)) &quot;, :offset 16, :ns &quot;user&quot;}], :remote []}}</component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false" nameIsGenerated="true">
+      <module name="csvdb" />
+      <setting name="replType" value="NREPL" />
+      <setting name="execution" value="INTELLIJ" />
+      <setting name="jvmArgs" value="" />
+      <setting name="parameters" value="" />
+      <setting name="workingDir" value="$PROJECT_DIR$" />
+      <setting name="profiles" value="" />
+      <setting name="aliases" value="" />
+      <shortenClasspath name="ARGS_FILE" />
+      <setting name="fixLineNumbers" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
+      <setting name="replType" value="NREPL" />
+      <setting name="execution" value="LEININGEN" />
+      <module name="" />
+      <setting name="jvmArgs" value="" />
+      <setting name="parameters" value="" />
+      <setting name="workingDir" value="" />
+      <setting name="profiles" value="" />
+      <setting name="aliases" value="" />
+      <setting name="fixLineNumbers" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="ClojureREPL" factoryName="Remote" activateToolWindowBeforeRun="false">
+      <setting name="host" value="" />
+      <setting name="port" value="0" />
+      <setting name="replType" value="SOCKET" />
+      <setting name="configType" value="SPECIFY" />
+      <setting name="fixLineNumbers" value="false" />
+      <module name="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1754" y="727" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576436299234">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state x="1754" y="727" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.3200.1731@0.23.3200.1731" timestamp="1576436299234" />
+    <state x="2140" y="784" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576270917105">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state x="2140" y="784" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.23.3200.1731@0.23.3200.1731" timestamp="1576270917105" />
+    <state x="1757" y="550" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1576270914047">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state x="1757" y="550" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.23.3200.1731@0.23.3200.1731" timestamp="1576270914047" />
+    <state x="640" y="185" key="DiffContextDialog" timestamp="1576436571747">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state x="640" y="185" key="DiffContextDialog/0.23.3200.1731@0.23.3200.1731" timestamp="1576436571747" />
+    <state width="3155" height="512" key="GridCell.Tab.0.bottom" timestamp="1576328113601">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state width="3155" height="512" key="GridCell.Tab.0.bottom/0.23.3200.1731@0.23.3200.1731" timestamp="1576328113601" />
+    <state width="3155" height="512" key="GridCell.Tab.0.center" timestamp="1576328113600">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state width="3155" height="512" key="GridCell.Tab.0.center/0.23.3200.1731@0.23.3200.1731" timestamp="1576328113600" />
+    <state width="3155" height="512" key="GridCell.Tab.0.left" timestamp="1576328113600">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state width="3155" height="512" key="GridCell.Tab.0.left/0.23.3200.1731@0.23.3200.1731" timestamp="1576328113600" />
+    <state width="3155" height="512" key="GridCell.Tab.0.right" timestamp="1576328113601">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state width="3155" height="512" key="GridCell.Tab.0.right/0.23.3200.1731@0.23.3200.1731" timestamp="1576328113601" />
+    <state x="1771" y="342" key="SettingsEditor" timestamp="1576431758782">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state x="1771" y="342" key="SettingsEditor/0.23.3200.1731@0.23.3200.1731" timestamp="1576431758782" />
+    <state x="1224" y="123" width="1764" height="1530" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1576436788795">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state x="1224" y="123" width="1764" height="1530" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.3200.1731@0.23.3200.1731" timestamp="1576436788795" />
+    <state x="1969" y="720" key="com.intellij.ide.util.TipDialog" timestamp="1576337505510">
+      <screen x="0" y="23" width="3200" height="1731" />
+    </state>
+    <state x="1969" y="720" key="com.intellij.ide.util.TipDialog/0.23.3200.1731@0.23.3200.1731" timestamp="1576337505510" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/csvdb/core.clj</url>
+          <line>33</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
