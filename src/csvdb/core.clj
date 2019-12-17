@@ -121,18 +121,24 @@
 ;
 ; Hint: loop-recur, let, first, next, join*
 (defn perform-joins [data joins*]
-		)
+		(loop [data1 data
+				 joins joins*]
+			(if (empty? joins)
+				data1
+				(let [[col1 data2 col2] (first joins)]
+					(recur (join* data1 col1 data2 col2)
+							 (next joins))))))
 
 (defn select [data & {:keys [where limit order-by joins]}]
-  (-> data
-    (perform-joins joins)
-    (where* where)
-    (order-by* order-by)
-    (limit* limit)))
-;
+	(-> data
+		 (perform-joins joins)
+		 (where* where)
+		 (order-by* order-by)
+		 (limit* limit)))
+
 ;(select student)
-;;; => [{:id 1, :year 1998, :surname "Ivanov"} {:id 2, :year 1997, :surname "Petrov"} {:id 3, :year 1996, :surname "Sidorov"}]
-;
+;; => [{:id 1, :year 1998, :surname "Ivanov"} {:id 2, :year 1997, :surname "Petrov"} {:id 3, :year 1996, :surname "Sidorov"}]
+
 ;(select student :order-by :year)
 ;;; => ({:id 3, :year 1996, :surname "Sidorov"} {:id 2, :year 1997, :surname "Petrov"} {:id 1, :year 1998, :surname "Ivanov"})
 ;
@@ -151,5 +157,5 @@
 ;(select student-subject :joins [[:student_id student :id] [:subject_id subject :id]])
 ;;; => [{:subject "Math", :subject_id 1, :surname "Ivanov", :year 1998, :student_id 1, :id 1} {:subject "Math", :subject_id 1, :surname "Petrov", :year 1997, :student_id 2, :id 2} {:subject "CS", :subject_id 2, :surname "Petrov", :year 1997, :student_id 2, :id 2} {:subject "CS", :subject_id 2, :surname "Sidorov", :year 1996, :student_id 3, :id 3}]
 ;
-;(select student-subject :limit 2 :joins [[:student_id student :id] [:subject_id subject :id]])
-;;; => ({:subject "Math", :subject_id 1, :surname "Ivanov", :year 1998, :student_id 1, :id 1} {:subject "Math", :subject_id 1, :surname "Petrov", :year 1997, :student_id 2, :id 2})
+;(select* student-subject :limit 2 :joins [[:student_id student :id] [:subject_id subject :id]])
+;; => ({:subject "Math", :subject_id 1, :surname "Ivanov", :year 1998, :student_id 1, :id 1} {:subject "Math", :subject_id 1, :surname "Petrov", :year 1997, :student_id 2, :id 2})
