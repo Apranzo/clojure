@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/csvdb.iml" filepath="$PROJECT_DIR$/csvdb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/task01/csvdb.iml" filepath="$PROJECT_DIR$/task01/csvdb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/task02.iml" filepath="$PROJECT_DIR$/task02.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,10 @@
-(defproject csvdb "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+(defproject by.clojurecourse/task02 "0.1.0"
+  :description "Homework 2 for Clojure Course"
+  :url "http://clojurecourse.by"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.10.1"]
-                 [clojure-csv "2.0.2"]])
+                 [org.clojure/data.csv "0.1.4"]
+                 [org.clojure/core.match "0.3.0"]]
+  :aot [task02.Database task02.core]
+  :main task02.core)
