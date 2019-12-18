@@ -1,7 +1,7 @@
 (ns task02.query
-  (:use [task02 helpers db]
-        [clojure.core :only [(re-matches)]]
-  (:use '[clojure.core.match :only (match)]))
+   (:require [clojure.core.match :refer [match]])
+   (:require [clojure.edn :as edn])
+   (:use [task02 helpers db]))
 
 ;; Функция выполняющая парсинг запроса переданного пользователем
 ;;
@@ -37,25 +37,46 @@
 ;; > (parse-select "werfwefw")
 ;; nil
 ;; SELECT table_name [WHERE column comp-op value] [ORDER BY column] [LIMIT N] [JOIN other_table ON left_column = right_column]
+;(:or ("order by" _) ("limit" _)
+
+
+(defn make-where-function [column op value]
+      #(~op (keyword column) (edn/read-string value)))
+
 (defn parse-select [^String sel-string]
-      (let [sel (.split (.toLowerCase sel-string) " ")]
-         (match sel
-         ["select" _ "where" _ (:or "=" ">" "<" ">=" "<=") _ (:or ("order by" _) ("limit" _)
-                                                                ("join" _ "on" _ (:or "=" ">" "<" ">=" "<=") _ ))]
+      (loop [parsed [] req (vec (.split (.toLowerCase sel-string) " "))]
+         (match req
+                [] parsed
 
-(defn make-where-function [& args] :implement-me)
+                ["select" tbl & other]
+                (recur (conj parsed tbl) other)
 
-;; Выполняет запрос переданный в строке.  Бросает исключение если не удалось распарсить запрос
+                ["limit" n & other]
+                (recur (concat parsed [:limit (parse-int n)]) other)
 
-;; Примеры вызова:
-;; > (perform-query "select student")
-;; ({:id 1, :year 1998, :surname "Ivanov"} {:id 2, :year 1997, :surname "Petrov"} {:id 3, :year 1996, :surname "Sidorov"})
-;; > (perform-query "select student order by year")
-;; ({:id 3, :year 1996, :surname "Sidorov"} {:id 2, :year 1997, :surname "Petrov"} {:id 1, :year 1998, :surname "Ivanov"})
-;; > (perform-query "select student where id > 1")
-;; ({:id 2, :year 1997, :surname "Petrov"} {:id 3, :year 1996, :surname "Sidorov"})
-;; > (perform-query "not valid")
-;; exception...
+                ["order" "by" column & other]
+                (recur (concat parsed [:order-by (keyword column)]) other)
+
+                ["where" column op value & other]
+                (recur (concat parsed [:where (make-where-function column op value)]) other)
+
+                ["join" otherTbl "on" left "=" right & _]
+                (concat parsed [:joins [[(keyword left) otherTbl (keyword right)]]])
+
+                :else nil)))
+
+
+                  ;; Выполняет запрос переданный в строке.  Бросает исключение если не удалось распарсить запрос
+
+                  ;; Примеры вызова:
+                  ;; > (perform-query "select student")
+                  ;; ({:id 1, :year 1998, :surname "Ivanov"} {:id 2, :year 1997, :surname "Petrov"} {:id 3, :year 1996, :surname "Sidorov"})
+                  ;; > (perform-query "select student order by year")
+                  ;; ({:id 3, :year 1996, :surname "Sidorov"} {:id 2, :year 1997, :surname "Petrov"} {:id 1, :year 1998, :surname "Ivanov"})
+                  ;; > (perform-query "select student where id > 1")
+                  ;; ({:id 2, :year 1997, :surname "Petrov"} {:id 3, :year 1996, :surname "Sidorov"})
+                  ;; > (perform-query "not valid")
+                  ;; exception...
 (defn perform-query [^String sel-string]
   (if-let [query (parse-select sel-string)]
     (apply select (get-table (first query)) (rest query))

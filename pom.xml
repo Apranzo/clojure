@@ -13,7 +13,12 @@
       <url>http://www.eclipse.org/legal/epl-v10.html</url>
     </license>
   </licenses>
-  <scm/>
+  <scm>
+    <url>https://github.com/Apranzo/clojure</url>
+    <connection>scm:git:git://github.com/Apranzo/clojure.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/Apranzo/clojure.git</developerConnection>
+    <tag>25cfb6008f4bac408a8beb2686ecb582cba50cb0</tag>
+  </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
@@ -66,6 +71,11 @@
       <groupId>org.clojure</groupId>
       <artifactId>data.csv</artifactId>
       <version>0.1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.clojure</groupId>
+      <artifactId>core.match</artifactId>
+      <version>0.3.0</version>
     </dependency>
   </dependencies>
 </project>
