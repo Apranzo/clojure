@@ -17,7 +17,7 @@
     <url>https://github.com/Apranzo/clojure</url>
     <connection>scm:git:git://github.com/Apranzo/clojure.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/Apranzo/clojure.git</developerConnection>
-    <tag>25cfb6008f4bac408a8beb2686ecb582cba50cb0</tag>
+    <tag>69a0b3ef735a1fe7bd12050bc484abfa2f053a02</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>

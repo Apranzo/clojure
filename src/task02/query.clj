@@ -39,9 +39,10 @@
 ;; SELECT table_name [WHERE column comp-op value] [ORDER BY column] [LIMIT N] [JOIN other_table ON left_column = right_column]
 ;(:or ("order by" _) ("limit" _)
 
-
+;(defn make-where-function [column op value]
+;      #((resolve (symbol op)) ((keyword column) %) (read-string value)))
 (defn make-where-function [column op value]
-      #(~op (keyword column) (edn/read-string value)))
+      #((resolve (symbol op)) ((keyword column) %) (edn/read-string value)))
 
 (defn parse-select [^String sel-string]
       (loop [parsed [] req (vec (.split (.toLowerCase sel-string) " "))]

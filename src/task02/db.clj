@@ -116,7 +116,7 @@
 (defn update [data upd-map & {:keys [where]}]
       (let [where (if where
                      where
-                     (identity false))
+                     (identity true))
             mmerge #(if (where %)(merge % upd-map) %)]
          (swap! data (partial map mmerge))))
 
